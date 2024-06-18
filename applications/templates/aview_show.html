@@ -1,0 +1,52 @@
+{% extends "abase.html" %} 
+{% block title %}Book a show{% endblock %} 
+
+{% block content %}
+
+
+<div class="profile-content">
+    <div class="post">
+          <div class="post-body">
+             <div class="post-header">
+             </div>
+             <div class="post-content">
+                <h4>{{show.name}}</h4>
+                <video src="/static/show_trailers/{{show.trailer}}"type="video/mp4" class="image" controls alt="video not available"></video>
+                <p>{{show.description}}</p>
+             </div>
+
+
+
+             <div class="post-likes">
+                <div class="stats-right">
+                  {{show.tags}}
+                </div>
+
+                <p>Ticket Price: {{show.price}}</p>
+                <p>Show Date: {{show.date}}</p>
+             </div>
+
+
+             <div class="post-footer">
+
+               <div class="wrapper">
+                <a href="/update_show/{{show.id}}"><button class="btn btn-primary">Edit show</button></a> 
+                <a href="/delete_show/{{show.id}}"><button class="btn btn-danger" onclick="alert('Press Ok to delete the show')">Delete show</button></a> 
+               </div>
+
+
+             </div>
+
+
+          </div>
+       
+    </div>              
+
+</div>
+
+
+
+
+
+
+{% endblock %}

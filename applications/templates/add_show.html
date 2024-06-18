@@ -1,0 +1,66 @@
+{% extends "abase.html" %} 
+{% block title %}add_show{% endblock %} 
+
+{% block content %}
+
+
+<form class="was-validated"  style="margin: 0 20%; padding-top: 100px;" method="POST" enctype="multipart/form-data">
+
+
+    <div class="mb-3">
+      <input type="text" name="name" class="form-control is-invalid" placeholder="Movie name" maxlength="30" required>
+    </div>
+    <div class="mb-3">
+      <input type="date" name="date" class="form-control is-invalid" placeholder="Date" required>
+    </div>
+    <div class="mb-3">
+        <input type="number" name="price" class="form-control is-invalid" placeholder="Price" max="500" min="100" required>
+      </div>
+    <div class="mb-3">
+        <input type="text" name="tags" class="form-control is-invalid" placeholder="Add tags" maxlength="150" required>
+    </div>
+    <div class="mb-3">
+        <textarea class="form-control is-invalid" name="description" placeholder="Show description" maxlength="100" required></textarea>
+      </div>
+  
+  
+   
+    <div class="mb-3">
+      <label>Upload poster</label>
+      <input type="file" name="poster" class="form-control" aria-label="file example" required>
+    </div>
+    <div class="mb-3">
+        <label>Upload trailer</label>
+        <input type="file" name="trailer" class="form-control" aria-label="file example" required>
+      </div>
+  
+      <div class="collapse" id="expand">
+        {% for venue in venues %}
+        <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <label for="{{venue.name}}">{{venue.name}}</label>
+          <input type="checkbox" id="{{venue.name}}" name="items" value="{{venue.id}}">
+        </div>
+        
+        </div>
+        <hr>
+        {% endfor %}
+
+     </div>
+
+      <a data-bs-toggle="collapse" href="#expand" role="button">
+      <small>Alocate Venues for the Show</small>
+      </a>
+
+  
+    <div class="mb-3">
+      <button class="btn btn-primary" type="submit">Add</button>
+    </div>
+  </form>
+
+
+
+
+
+
+{% endblock %}

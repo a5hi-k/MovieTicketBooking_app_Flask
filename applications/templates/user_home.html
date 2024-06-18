@@ -1,0 +1,146 @@
+{% extends "ubase.html" %} 
+{% block title %}user home{% endblock %} 
+
+{% block content %}
+{% if shows %}
+<div style="margin-top: 40px;padding-top: 20px;">
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade fixed" data-bs-ride="carousel" style="z-index: 0;">
+    <div class="carousel-inner">  
+      <div class="carousel-item active" data-bs-interval="1000">
+        <img src="/static/show_images/defaultbanner.jpeg" class="d-block w-100" alt="not found">
+        <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+      {% for show in shows %}
+        <div class="carousel-item" data-bs-interval="2500">
+            <a href="/view_show/{{show.id}}"><img src="/static/show_images/{{show.poster}}" class="d-block w-100" alt="..."></a>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+
+
+{% if latest %}
+<div class="user_genere">
+  <p>New Releases</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for show in latest %}
+  <div class="col">
+    <div class="card">
+    <a href="/view_show/{{show.id}}"><img src="/static/show_images/{{show.poster}}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+       <h3 class="card-title">{{show.name}}</h3>
+        <p class="card-text">{{show.description}}</p>
+        <p class="card-text">{{show.date}}</p>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+{% endif %}
+
+
+{% if horror %}
+
+<h1 style="margin-top: 100px;">Horror</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for show in horror %}
+  <div class="col">
+    <div class="card">
+    <a href="/view_show/{{show.id}}"><img src="/static/show_images/{{show.poster}}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+       <h3 class="card-title">{{show.name}}</h3>
+        <p class="card-text">{{show.description}}</p>
+        <p class="card-text">{{show.date}}</p>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+{% endif %}
+
+{% if romance %}
+<h1 style="margin-top: 100px;">Romance</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for show in romance %}
+  <div class="col">
+    <div class="card">
+      <a href="/view_show/{{show.id}}"><img src="/static/show_images/{{show.poster}}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+        <h3 class="card-title">{{show.name}}</h3>
+        <p class="card-text">{{show.description}}</p>
+        <p class="card-text">{{show.date}}</p>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+{% endif %}
+{% if animae %}
+<h1 style="margin-top: 100px;">Animae</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for show in animae %}
+  <div class="col">
+    <div class="card">
+      <a href="/view_show/{{show.id}}"><img src="/static/show_images/{{show.poster}}" class="card-img-top" alt="..."></a>
+      <div class="card-body">
+        <h3 class="card-title">{{show.name}}</h3>
+        <p class="card-text">{{show.description}}</p>
+        <p class="card-text">{{show.date}}</p>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+{% endif %}
+
+{% if venues %}
+<h1 class="user_genere">Popular Screens</h1>
+
+<div style="margin-top: 40px;">
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade fixed" data-bs-ride="carousel">
+      <div class="carousel-inner">  
+        <div class="carousel-item active" data-bs-interval="1000">
+          <img src="/static/venue_images/defaulttheater.jpeg" class="d-block w-100" alt="not found">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
+        </div>
+        {% for venue in venues %}
+          <div class="carousel-item" data-bs-interval="2500">
+              <a href="/venue_shows/{{venue.id}}"><img src="/static/venue_images/{{venue.image}}" class="d-block w-100" alt="..."></a>
+              <div class="carousel-caption d-none d-md-block">
+              </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+
+
+
+{% endif %}
+
+
+
+
+{% endblock %}

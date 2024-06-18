@@ -1,0 +1,57 @@
+{% extends "ubase.html" %} 
+{% block title %}register{% endblock %} 
+
+{% block content %}
+<form method="POST" style="margin: 4% 15%; padding: 5%;">
+    <h2 align="center">Sign Up</h2>
+    <div style="background-color: rgb(189, 189, 189);padding: 10%;">
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        placeholder="Enter your email"
+        required
+      />
+      <label for="username">Username</label>
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        placeholder="Enter Username"
+        required
+        maxlength="20"
+      />
+      <label for="password1">Password</label>
+      <input
+        type="password"
+        name="password1"
+        class="form-control"
+        placeholder="Enter Password at least 6 charecters"
+        required
+
+      />
+      <label for="password2">Retype Password</label>
+      <input
+        type="password"
+        name="password2"
+        class="form-control"
+        placeholder="Enter Password Again"
+        required
+
+      />
+      <br />
+      <div align="center">
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+      </div>
+    </div>
+</div>
+  </form>
+  <div style="margin: -9% 20%;">
+    <p>Already a User?   <a href="/user_login">Login</a></p>
+  </div>
+  
+
+{% endblock %}

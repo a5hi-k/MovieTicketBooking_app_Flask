@@ -1,0 +1,104 @@
+{% extends "abase.html" %} 
+{% block title %}update_venue{% endblock %} 
+
+{% block content %}
+
+
+<div class="model-body row">
+
+
+    <div class="col-md-6 content-card">
+          <div class="card card-text">
+              <div class="content">
+                  <h4 class="title">{{venue.name}}</h4>
+                    <img src="/static/venue_images/{{venue.image}}" class="card-img" alt="not found">
+                  <p class="description">{{venue.description}}</p>
+                  <p class="description">Located at: {{venue.location}}</p>
+                  <p class="description">Max Capacity for a show: {{venue.capacity}}</p>
+                  <p>Available Shows:</p>
+                  {% for show in allocations %}
+                    <small>{{show.show.name}} , </small>
+
+                  {% endfor %}
+
+                </div>
+              </div>
+        </div>
+  
+        <div class="col-md-6 content-card">
+
+              <form class="was-validated" method="POST" enctype="multipart/form-data">
+          
+          
+            <div class="mb-3">
+              <input type="text" name="name" class="form-control" placeholder="venue name" maxlength="30" value="{{venue.name}}">
+            </div>
+            <div class="mb-3">
+                <input type="text" name="location" class="form-control" placeholder="location" maxlength="30" value="{{venue.location}}">
+              </div>
+              <div class="mb-3">
+                <input type="number" name="capacity" class="form-control" placeholder="capacity" max="300" min="1" value="{{venue.capacity}}">
+              </div>  
+           
+            <div class="mb-3">
+              <textarea class="form-control is-invalid" name="description" maxlength="100" placeholder="description" required>{{venue.description}}</textarea>
+            </div>
+
+            <div class="mb-3">
+              <input type="number" name="additional_price" class="form-control" placeholder="additional price for each ticket" value="{{venue.additional_price}}">
+            </div>  
+
+          
+            <div class="mb-3">
+              <label>Update image</label>
+              <input type="file" name="file" class="form-control" aria-label="file example">
+            </div>
+
+            
+
+            <div class="collapse" id="expand">
+              {% for show in shows %}
+                {% if show.id in list  %}
+              <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <label for="{{venue.name}}">{{show.name}}</label>
+                <input type="checkbox" id="{{venue.name}}" name="items" value="{{show.id}}" checked>
+              </div>
+              
+              </div>
+              <hr>
+                {% else %}
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <label for="{{venue.name}}">{{show.name}}</label>
+                    <input type="checkbox" id="{{venue.name}}" name="items" value="{{show.id}}">
+                  </div>
+                  
+                  </div>
+                  <hr>
+                {% endif %}
+              {% endfor %}
+      
+           </div>
+      
+            <a data-bs-toggle="collapse" href="#expand" role="button">
+            <small>Alocate shows for the venue</small>
+            </a>
+
+
+
+
+            <div class="mb-3">
+              <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+              </form>
+        </div>
+      
+
+</div>
+
+
+
+
+
+{% endblock %}

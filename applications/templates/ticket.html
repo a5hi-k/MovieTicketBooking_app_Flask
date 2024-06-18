@@ -1,0 +1,20 @@
+{% extends "ubase.html" %} 
+{% block title %}user home{% endblock %} 
+
+{% block content %}
+
+<div class="center">
+    <h3>Congratulations {{booking.user.username}}!,your booking is successfull</h3>
+    <div style="background-color: rgb(184, 184, 184); padding: 10px;">
+    <h1>Movie Name: {{booking.show.name}}</h1>
+    <h1>At: {{booking.venue.name}},{{booking.venue.location}}</h1>
+    </div>
+    <hr>
+    <h3>On: {{booking.date}}</h3>
+    <h3>Number of seats booked: {{booking.seats}}</h3>
+    <h2>Total price: {{booking.price}}</h2>
+    
+</div>
+
+
+{% endblock %}

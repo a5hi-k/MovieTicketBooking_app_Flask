@@ -1,0 +1,40 @@
+{% extends "ubase.html" %} 
+{% block title %}venue shows{% endblock %} 
+
+{% block content %}
+<div style="margin-top: 20px;">
+<div class="card bg-dark text-white fixed">
+    <img src="/static/venue_images/{{venue.image}}" class="card-img" alt="not found">
+    <div class="card-img-overlay">
+      <h1 class="card-title venue">Welcome to {{venue.name}}</h1>
+      <h2 class="card-text">{{venue.description}}</h2>
+      <h2 class="card-text">{{venue.location}}</h2>
+    </div>
+  </div>
+</div>
+
+<hr><hr>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 70px;">
+
+{% for show in shows %}
+
+
+        <div class="col">
+          <div class="card">
+            <a href="/view_show/{{show.show.id}}"><img src="/static/show_images/{{show.show.poster}}" class="card-img-top" alt="not found"></a>
+            <div class="card-body">
+              <h5 class="card-title">{{show.show.name}}</h5>
+              <p class="card-text">{{show.show.description}}</p>
+              {% if show.show.ratecount != 0 %}
+                <p class="card-text">Rating: {{show.show.rating/show.show.ratecount}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+
+{% endfor %}      
+  </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "abase.html" %} 
+{% block title %}admin_home{% endblock %} 
+
+{% block content %}
+
+
+
+{% for venue in venues %} 
+<div style="margin-top: 40px;">
+
+
+  <div class="card bg-dark text-white fixed">
+   <img src="/static/venue_images/{{venue.image}}" class="card-img" alt="not found">
+    <div class="card-img-overlay">
+      <a href="/avenue_shows/{{venue.id}}" class="slinks"><h1 class="card-title">{{venue.name}}</h1></a>
+      <h2 class="card-text">{{venue.description}}</h2>
+      <h3 class="card-text">Located at: {{venue.location}}</h3>
+      <h4 class="card-text">Capacity: {{venue.capacity}}</h4>
+
+    </div>
+  </div>
+</div> 
+
+
+{% endfor %}   
+
+
+{% endblock %}

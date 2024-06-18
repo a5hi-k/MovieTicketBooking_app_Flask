@@ -1,0 +1,101 @@
+{% extends "ubase.html" %} 
+{% block title %}Book a show{% endblock %} 
+
+{% block content %}
+<div style="margin-top: 40px;">
+
+
+    <div class="card bg-dark text-white fixed">
+     <img src="/static/venue_images/{{venue.image}}" class="card-img" alt="not found">
+      <div class="card-img-overlay">
+        <a href="/venue_shows/{{venue.id}}" class="slinks"><h1 class="card-title">Welcome To {{venue.name}}</h1></a>
+        <h2 class="card-text">{{venue.description}}</h2>
+        <h3 class="card-text">Located At: {{venue.location}}</h3>
+        <h4 class="card-text">With Maximun Capacity Of {{venue.capacity}} Seats</h4>
+  
+      </div>
+    </div>
+  </div> 
+  
+<div class="profile-content">
+    <div class="post">
+          <div class="post-body">
+             <div class="post-header">
+             </div>
+             <div class="post-content">
+                <h2>{{show.name}}</h2>
+                <img src="/static/show_images/{{show.poster}}" class="image" alt="not found">
+                <h4>On screens from: {{show.date}}</h4>
+                {% if show.ratecount != 0 %}
+                  Overall rating:{{show.rating/show.ratecount}}
+                {% endif %}
+             </div> 
+
+
+
+
+
+             <div class="post-likes">
+                <div class="stats-right">
+                  <h6>Ticket Price: {{venue.additional_price | int + show.price | int}}</h6>
+
+                </div>
+                <form method="POST">
+                  <label for="seats">Enter the number of seats to book</label>
+                  <input type="number" name="seats" class="rate is-invalid" max="500" min="1">
+                  <label for="date">Date</label>
+                  <input type="date" name="date" class="is-invalid" placeholder="Date" min="{{show.date}}" required>
+
+                <button class="btn btn-primary" type="submit">check availability</button>
+
+                </form>
+             </div>
+
+
+             <div class="post-footer">
+
+             </div>
+
+           </div>
+       
+    </div>              
+
+</div> 
+
+
+<div>
+  
+  <h1 class="user_genere">Shows at {{venue.name}}</h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 70px;">
+
+    {% for show in venue_shows %}
+    
+    
+            <div class="col">
+              <div class="card">
+                <a href="/availability/{{venue.id}}/{{show.show.id}}"><img src="/static/show_images/{{show.show.poster}}" class="card-img-top" alt="not found"></a>
+                <div class="card-body">
+                  <h5 class="card-title">{{show.show.name}}</h5>
+                  <p class="card-text">{{show.show.description}}</p>
+                  {% if show.show.ratecount != 0 %}
+                    <p class="card-text">Rating: {{show.show.rating/show.show.ratecount}}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+    
+    
+    {% endfor %}      
+      </div>
+    
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}

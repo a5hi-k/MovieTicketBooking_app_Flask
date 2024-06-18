@@ -1,0 +1,28 @@
+{% extends "ubase.html" %} 
+{% block title %}shows{% endblock %} 
+
+{% block content %}
+
+
+
+{% for show in shows %} 
+<div style="margin-top: 40px;">
+
+
+  <div class="card bg-dark text-white fixed">
+   <img src="/static/show_images/{{show.poster}}" class="card-img" alt="not found">
+    <div class="card-img-overlay">
+      <a href="/view_show/{{show.id}}" class="slinks"><h1 class="card-title">{{show.name}}</h1></a>
+      <h2 class="card-text">{{show.description}}</h2>
+      {%  if show.ratecount != 0 %}
+        <h3 class="card-text">Rating: {{show.rating/show.ratecount}}</h3>
+      {% endif %}
+    </div>
+  </div>
+</div> 
+
+
+{% endfor %}   
+
+
+{% endblock %}

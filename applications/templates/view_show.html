@@ -1,0 +1,109 @@
+{% extends "ubase.html" %} 
+{% block title %}show view{% endblock %} 
+
+{% block content %}
+
+<div class="profile-content">
+    <div class="post">
+          <div class="post-body">
+             <div class="post-header">
+             </div>
+             <div class="post-content">
+                <h4>{{show.name}}</h4>
+                <video src="/static/show_trailers/{{show.trailer}}"type="video/mp4" class="image" controls alt="video not available"></video>
+                <!-- controls autoplay -->
+                <p>{{show.description}}</p>
+             </div> 
+
+
+
+             <div class="collapse" id="review-{{show.id}}" style="background-color: rgb(249, 249, 249);">
+                {% for review in show.reviews %}
+                <div class="d-flex justify-content-between align-items-center">
+                <div>
+                   <p>{{review.user.username}}:   {{review.text}}</p>
+                </div>
+                <div>
+                   {% if user.id == review.author %}
+                   <div>
+                   <a href="/review/delete/{{review.id}}"><i class="bi bi-trash3-fill review-delete"></i></a> 
+                   </div>
+                   {% endif %}
+
+                   <div class="text-muted" style="font-size: x-small;">reviewed on:{{review.date_created}}</div>
+                </div>
+                </div>
+                <hr>
+                {% endfor %}
+
+             </div>
+
+
+
+             <div class="post-likes">
+                <div class="stats-right">
+                   {% if show.reviews|length > 0 %}
+                   <a data-bs-toggle="collapse" href="#review-{{show.id}}" role="button">
+                   <small>View {{show.reviews|length}} Reviews</small>
+                   </a>
+                   {% else %}
+                   <small class="text-muted">No Reviews yet!</small>
+                   {% endif %}
+                </div>
+                <p>On screens from {{show.date}}</p>
+
+                <form action="/rate/{{show.id}}" method="POST">
+                <input type="number" name="rate" placeholder="0-10" class="rate is-invalid" max="10" min="0">
+                <button class="btn btn-primary rate" type="submit">Rate</button>
+
+                </form>
+                {% if show.ratecount != 0 %}
+                  Overall rating:{{ show.rating / show.ratecount }}
+                {% endif %}
+             </div>
+
+
+             <div class="post-footer">
+
+               <div class="collapse" id="expand">
+                  {% for venue in venues %}
+                  <div class="d-flex justify-content-between align-items-center">
+                  <a href="/availability/{{venue.venue.id}}/{{show.id}}" class="slinks">{{venue.venue.name}}</a>
+                  <p>Price: {{venue.venue.additional_price | int + show.price | int}}</p>
+                  </div>
+                  <hr>
+                  {% endfor %}
+          
+               </div>
+          
+                <a data-bs-toggle="collapse" href="#expand" role="button">
+                <small>See available screens for booking</small>
+                </a>
+
+             </div>
+
+
+             <div class="post-comment-box">
+                <div class="input">
+                   <form action="/review/{{show.id}}" method="POST">
+                      <div class="input-group">
+                         <input type="text" class="form-control rounded-corner perimeter" name="text" placeholder="Write a review..." maxlength="100">
+                         <span class="input-group-btn">
+                         <button class="btn btn-secondary rounded-corner" style="z-index: 0;" type="submit">Post</button>
+                         </span>
+                      </div>
+                   </form>
+                </div>
+             </div> 
+           </div>
+       
+    </div>              
+
+</div> 
+
+
+
+
+
+
+{% endblock %}

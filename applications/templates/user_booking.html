@@ -1,0 +1,37 @@
+{% extends "ubase.html" %} 
+{% block title %}user bookings{% endblock %} 
+
+{% block content %}
+
+
+{% if bookings %}
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 20px;">
+        {% for booking in bookings %}
+        <div class="col">
+          <div class="card">
+            <img src="/static/show_images/{{booking.show.poster}}" class="card-img-top" alt="...">
+            <div class="card-body">
+             <h3 class="card-title">{{booking.show.name}}</h3>
+             <h3 class="card-title">At: {{booking.venue.name}}</h3>
+              <p class="card-text">On: {{booking.date}}</p>
+              <p class="card-text">Seats: {{booking.seats}}</p>
+              <p class="card-text">Total: {{booking.price}}</p>
+              <a href="/cancel_booking/{{booking.id}}"><button class="btn btn-danger" onclick="alert('Press Ok to delete the show')">cancel booking</button></a>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      
+{% endif %} 
+
+{% if not bookings %}
+
+<div class="user_genere">
+    <h1>No Bookings yet!</h1>
+</div>
+{% endif %}    
+
+
+{% endblock %}

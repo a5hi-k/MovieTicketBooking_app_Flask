@@ -1,0 +1,42 @@
+{% extends "ubase.html" %} 
+{% block title %}user login{% endblock %} 
+
+{% block content %}
+
+    <form method="POST" style="margin: 2% 15%; padding: 5%;">
+        <h2 align="center">Login</h2>
+        <div style="background-color: rgb(189, 189, 189);padding: 10%;">
+        <div class="form-group">
+          
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            placeholder="Enter Username"
+            required
+          />
+          <label for="password1">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter Password"
+            required
+          />
+          <br />
+          <div align="center">
+            <button class="btn btn-success" type="submit">login</button>
+          </div>
+        </div>
+      </div>
+      </form>
+
+      <div style="margin: -8% 20%; padding-top: 30px;">
+        <p>Forgot Password?<a href="/forgotpassword">Send Password Reset email</a></p>
+        <p>New user?   <a href="/register">Register</a></p>
+
+      </div>
+
+    
+{% endblock %}      

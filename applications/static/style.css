@@ -1,0 +1,202 @@
+
+
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    margin-top: -4%;
+  }
+.container{
+    margin-top: 4%;
+  }
+
+body{
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(to left,#ede574,#e1f5c4);
+}
+
+.profile-header {
+    position: relative;
+    overflow: hidden;
+    margin-left: -7%;
+    width: 114%;
+    box-shadow: 0 25px  25px rgba(7, 7, 43, 0.815);
+
+}
+
+
+.profile-content {
+    padding-top: 60px;
+}
+
+.post {
+    list-style-type: none;
+    position: relative
+}
+
+.post:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    width: 1px;
+    background: #0c0d3d9c;
+    left: 20%;
+    margin-left: -3.5px
+}
+
+
+
+.post-body {
+    margin-left: 23%;
+    margin-right: 17%;
+    background: #fff;
+    position: relative;
+    padding: 20px 25px;
+    border-radius: 6px
+}
+
+
+.post-body>div+div {
+    margin-top: 15px
+}
+
+.post-body>div+div:last-child {
+    margin-bottom: -20px;
+    padding-bottom: 20px;
+    border-radius: 0 0 6px 6px
+}
+
+.post-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e7eb;
+    line-height: 30px
+}
+
+
+.username {
+    font-size: 20px;
+    font-weight: 800
+}
+
+.username a {
+    color: #2d353c
+}
+
+.post img {
+    max-width: 100%;
+}
+
+.post-content {
+    letter-spacing: .25px;
+    line-height: 28px;
+    font-size: 16px
+}
+
+.post-footer {
+    background: #fff;
+    border-top: 1px solid #e2e7ec;
+    padding-top: 15px
+}
+
+
+.post-likes {
+    color: #6d767f;
+    font-weight: 600;
+    font-size: 15px
+}
+
+.post-likes .stats-right {
+    float: right
+}
+
+.post-comment-box {
+    background: linear-gradient(to left, #dadada, #313131);
+    margin-left: -25px;
+    margin-right: -25px;
+    padding: 20px 25px
+}
+
+
+.post-comment-box .user+.input {
+    margin-left: 44px
+}
+
+.image{
+    width: 100%;
+}
+.alert{
+    margin-top: 4%;
+}
+.review-delete{
+    color: red;
+    font-size: large;
+    margin-left: 80%;
+  }
+.review-delete-p{
+    color: red;
+    font-size: large;
+  }
+
+
+
+
+
+
+
+.wrapper{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.fixed{
+    width: 70rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.user_genere{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 900;
+    opacity: 0.7;
+}
+.venue{
+    font-size: 50px;
+    font-weight: 900;
+ 
+}
+.user_generecards{
+    width: 800px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+.rate{
+    width: 55px;
+}
+.center{
+    position: absolute;
+    border: 3px dashed black;
+    padding: 50px;
+    background-color: #cccccc;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.slinks{
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+
+}
+.slinks :hover{
+    color: rgb(0, 174, 255);
+}

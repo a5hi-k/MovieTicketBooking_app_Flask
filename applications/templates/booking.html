@@ -1,0 +1,58 @@
+{% extends "ubase.html" %} 
+{% block title %}Book a show{% endblock %} 
+
+{% block content %}
+
+<h1>Available for Booking</h1>
+  
+<div class="profile-content">
+    <div class="post">
+          <div class="post-body">
+             <div class="post-header">
+             </div>
+             <div class="post-content">
+                <h2>{{show.name}}</h2>
+                <img src="/static/show_images/{{show.poster}}" class="image" alt="not found">
+                {% if show.ratecount != 0 %}
+                  Overall rating:{{show.rating/show.ratecount}}
+                {% endif %}
+                <h6>Available number of seats: {{cap}}</h6>
+
+             </div> 
+
+
+
+
+
+             <div class="post-likes">
+                <div class="stats-right">
+                  <h6>Booking Date: {{date}}</h6>
+                  <h6>Seats booked: {{seats}}</h6>
+
+
+                </div>
+                <form action="/booking/{{user.id}}/{{venue.id}}/{{show.id}}/{{date}}/{{seats}}" method="POST">
+
+                <button class="btn btn-primary rate" type="submit">Book</button>
+
+                </form>
+             </div>
+
+
+             <div class="post-footer">
+
+             </div>
+
+           </div>
+       
+    </div>              
+
+</div> 
+
+
+
+
+
+
+
+{% endblock %}

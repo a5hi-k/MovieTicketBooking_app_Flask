@@ -1,0 +1,43 @@
+{% extends "abase.html" %} 
+{% block title %}venue shows{% endblock %} 
+
+{% block content %}
+<div style="margin-top: 20px;">
+<div class="card bg-dark text-white fixed">
+    <img src="/static/venue_images/{{venue.image}}" class="card-img" alt="not found">
+    <div class="card-img-overlay">
+      <h1 class="card-title">{{venue.name}}</h1>
+      <h3 class="card-text">{{venue.description}}</h3>
+      <h3 class="card-text">{{venue.location}}</h3>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <a href="/update_venue/{{venue.id}}"><button class="btn btn-primary">Edit venue</button></a> 
+  <a href="/delete_venue/{{venue.id}}"><button class="btn btn-danger" onclick="alert('Press Ok to delete the venue')">Delete venue</button></a> 
+</div>
+<hr><hr>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 70px;">
+
+{% for show in shows %}
+
+
+        <div class="col">
+          <div class="card">
+            <a href="/aview_show/{{show.show.id}}"><img src="/static/show_images/{{show.show.poster}}" class="card-img-top" alt="not found"></a>
+            <div class="card-body">
+              <h5 class="card-title">{{show.show.name}}</h5>
+              <p class="card-text">{{show.show.description}}</p>
+              {% if show.show.ratecount != 0 %}
+                <p class="card-text">Rating: {{show.show.rating/show.show.ratecount}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+
+{% endfor %}      
+  </div>
+
+{% endblock %}

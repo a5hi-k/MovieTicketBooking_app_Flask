@@ -1,0 +1,41 @@
+{% extends "abase.html" %} 
+{% block title %}add_venue{% endblock %} 
+
+{% block content %}
+
+
+<form class="was-validated"  style="margin: 0 20%; padding-top: 100px;" method="POST" enctype="multipart/form-data">
+
+
+    <div class="mb-3">
+      <input type="text" name="name" class="form-control is-invalid" placeholder="Venue name" maxlength="30" required>
+    </div>
+    <div class="mb-3">
+      <input type="text" name="location" class="form-control is-invalid" placeholder="Location" maxlength="30" required>
+    </div>
+    <div class="mb-3">
+      <input type="number" name="capacity" class="form-control is-invalid" placeholder="Capacity" max="300" min="1" required>
+    </div>
+ 
+    <div class="mb-3">
+      <textarea class="form-control is-invalid" name="description" placeholder="Venue description" maxlength="100" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <input type="number" name="additional_price" class="form-control is-invalid" placeholder="additional price foreach ticket" value="0">
+    </div>
+    <div class="mb-3">
+
+      <label>Upload venue image</label>
+      <input type="file" name="file" class="form-control" aria-label="file example" required>
+    </div>
+  
+    <div class="mb-3">
+      <button class="btn btn-primary" type="submit">Add</button>
+    </div>
+  </form>
+  
+
+
+
+{% endblock %}

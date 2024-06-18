@@ -1,0 +1,104 @@
+{% extends "abase.html" %} 
+{% block title %}update_show{% endblock %} 
+
+{% block content %}
+
+<div class="model-body row">
+
+
+    <div class="col-md-6 content-card">
+          <div class="card card-text">
+              <div class="content">
+                  <h3 class="title">{{show.name}}</h3>
+                    <img src="/static/show_images/{{show.poster}}" class="card-img" alt="not found">
+                  <p class="description">{{show.description}}</p>
+                  <p class="description">Price: {{show.price}}</p>
+                  <p class="description">Date: {{show.date}}</p>
+                  <p class="description">Tags: {{show.tags}}</p>
+                  <p>Showing on screens at:</p>
+                  {% for venue in allocations %}
+                    <small>{{venue.venue.name}} , </small>
+
+                  {% endfor %}
+                </div>
+              </div>
+        </div>
+  
+        <div class="col-md-6 content-card">
+
+              <form class="was-validated" method="POST" enctype="multipart/form-data">
+          
+          
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control is-invalid" placeholder="Movie name" maxlength="30" value="{{show.name}}">
+                  </div>
+                  <div class="mb-3">
+                    <input type="datetime-local" name="date" class="form-control is-invalid" placeholder="Date" value="{{show.date}}">
+                  </div>
+                  <div class="mb-3">
+                      <input type="number" name="price" class="form-control is-invalid" placeholder="Price" max="500" min="100" value="{{show.price}}">
+                    </div>
+                  <div class="mb-3">
+                      <input type="text" name="tags" class="form-control is-invalid" placeholder="Add tags" maxlength="150" value="{{show.tags}}">
+                  </div>
+                  <div class="mb-3">
+                      <textarea class="form-control is-invalid" name="description" placeholder="Show description" maxlength="100" required>{{show.description}}</textarea>
+                    </div>
+                
+                
+                 
+                  <div class="mb-3">
+                    <label>Update poster</label>
+                    <input type="file" name="poster" class="form-control" aria-label="file example">
+                  </div>
+                  <div class="mb-3">
+                      <label>Update trailer</label>
+                      <input type="file" name="trailer" class="form-control" aria-label="file example">
+                    </div>
+               
+
+
+
+                    <div class="collapse" id="expand">
+                      {% for venue in venues %}
+                        {% if venue.id in list  %}
+                      <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <label for="{{venue.name}}">{{venue.name}}</label>
+                        <input type="checkbox" id="{{venue.name}}" name="items" value="{{venue.id}}" checked>
+                      </div>
+                      
+                      </div>
+                      <hr>
+                        {% else %}
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div>
+                            <label for="{{venue.name}}">{{venue.name}}</label>
+                            <input type="checkbox" id="{{venue.name}}" name="items" value="{{venue.id}}">
+                          </div>
+                          
+                          </div>
+                          <hr>
+                        {% endif %}
+                      {% endfor %}
+              
+                   </div>
+              
+                    <a data-bs-toggle="collapse" href="#expand" role="button">
+                    <small>Alocate Venues for the Show</small>
+                    </a>
+              
+
+
+            <div class="mb-3">
+              <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+              </form>
+        </div>
+      
+
+</div>
+
+
+
+{% endblock %}
